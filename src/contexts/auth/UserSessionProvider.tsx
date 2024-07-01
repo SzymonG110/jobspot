@@ -1,22 +1,24 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { UserSessionData } from "#/types/global";
+import { revalidatePath } from "next/cache";
 
 type UserSessionContextType = UserSessionData & {
   logout: () => void;
   is_loading: boolean;
 };
 
-const UserSessionContext = createContext({} as UserSessionContextType);
+const UserSessionContext = createContext({
+  user: null,
+  session: null,
+} as UserSessionContextType);
 
 export function UserSessionProvider({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const router = useRouter();
   const [user_session, setUserSession] = useState<UserSessionData>({
     user: null,
     session: null,
@@ -32,7 +34,10 @@ export function UserSessionProvider({
       return axios.get("/api/auth/logout");
     },
     onSuccess: (data) => {
-      if (data.status === 200) router.push("/");
+      if (data.status === 200) {
+        revalidatePath("/");
+        location.href = "/";
+      }
     },
   });
 
