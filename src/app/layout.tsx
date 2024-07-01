@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import "../styles/globals.css";
-import { Providers as ProvidersTSX} from "#/app/Providers";
+import { Providers as ProvidersTSX } from "#/app/Providers";
 import Navbar from "#/components/shared/Navbar";
+import Container from "#/components/shared/Container";
 
 const montserrat = Montserrat({ subsets: ["latin"] });
 
@@ -23,7 +24,7 @@ export default function RootLayout({
         <ProvidersTSX>
           <ReactQueryDevtools initialIsOpen={false} />
           <Navbar />
-          {children}
+          <Container>{children}</Container>
         </ProvidersTSX>
       </body>
     </html>
