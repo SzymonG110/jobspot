@@ -16,7 +16,7 @@ export default function Navbar() {
   const user = useUserSession();
 
   return (
-    <NextUiNavbar className="absolute top-0">
+    <NextUiNavbar>
       <NavbarContent>
         <NavbarBrand
           as={Link}

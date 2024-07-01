@@ -10,7 +10,11 @@ export default function Container({
   const path = usePathname();
 
   return (
-    <div className={`container ${!path.includes("auth") ? "mt-20" : ""}`}>
+    <div
+      className={`w-[80vw] mx-auto container ${
+        !path.includes("auth") ? "mt-20" : ""
+      }`}
+    >
       {children}
     </div>
   );

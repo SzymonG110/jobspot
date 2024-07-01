@@ -31,6 +31,7 @@ export default function NavProfile() {
       <DropdownMenu aria-label="User Actions" variant="flat">
         <DropdownItem>Companies</DropdownItem>
         <DropdownItem>My Candidates</DropdownItem>
+        <DropdownItem color="primary">User Settings</DropdownItem>
         <DropdownItem color="danger" onClick={() => user.logout()}>
           Log Out
         </DropdownItem>
