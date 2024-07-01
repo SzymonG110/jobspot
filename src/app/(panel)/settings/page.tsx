@@ -1,4 +1,3 @@
 export default function Page() {
-    return <div>User Panel</div>;
-  }
-  
+  return <div>Settings Panel</div>;
+}

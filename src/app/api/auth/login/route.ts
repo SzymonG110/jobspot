@@ -23,16 +23,16 @@ export async function POST(req: Request) {
       .selectAll()
       .executeTakeFirstOrThrow();
 
-    const password_verified = compareSync(body.password, user.password_hash);
-    if (!password_verified) throw new Error("Password incorrect");
+    const isPasswordVerified = compareSync(body.password, user.password_hash);
+    if (!isPasswordVerified) throw new Error("Password incorrect");
 
     const session = await lucia.createSession(user.id, {});
-    const session_cookie = lucia.createSessionCookie(session.id);
+    const sessionCookie = lucia.createSessionCookie(session.id);
 
     return new Response(JSON.stringify(session), {
       status: 200,
       headers: {
-        "Set-Cookie": session_cookie.serialize(),
+        "Set-Cookie": sessionCookie.serialize(),
       },
     });
   } catch (e) {

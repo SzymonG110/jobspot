@@ -1,6 +1,7 @@
 import { Selectable } from "kysely";
 import { lucia } from "#/auth";
-import { User, UserSession } from "#/database/types";
+import { User } from "#/database/types";
+import { Session } from "lucia";
 
 declare module "lucia" {
   interface Register {
@@ -10,6 +11,6 @@ declare module "lucia" {
 }
 
 export type UserSessionData = {
-  user: Omit<Selectable<User>, "password_hash"> | null;
-  session: Selectable<UserSession> | null;
-};
+  user: Omit<Selectable<User>, "password_hash">;
+  session: Session;
+} | null;

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import "../styles/globals.css";
-import { Providers as ProvidersTSX } from "#/app/Providers";
+import { Providers as ProvidersTSX } from "#/components/shared/Providers";
 import Navbar from "#/components/shared/Navbar";
 import Container from "#/components/shared/Container";
 

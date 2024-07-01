@@ -10,10 +10,10 @@ import {
   Image,
 } from "@nextui-org/react";
 import NavProfile from "#/components/shared/navbar/Profile";
-import { useUserSession } from "#/contexts/auth/UserSessionProvider";
+import { useUserSession } from "#/hooks/useUserSession";
 
 export default function Navbar() {
-  const user = useUserSession();
+  const { data: user } = useUserSession();
 
   return (
     <NextUiNavbar>
@@ -36,7 +36,7 @@ export default function Navbar() {
 
       <NavbarContent justify="end">
         <NavbarItem>
-          {user.user && user.session ? (
+          {user ? ( // if loading is true, show loading spinner
             <NavProfile />
           ) : (
             <Button as={Link} color="primary" href="/auth/login" variant="flat">

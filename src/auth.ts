@@ -27,14 +27,12 @@ export const lucia = new Lucia(adapter, {
   },
 });
 
-export const userSessionData = cache(
-  async (session_id?: string): Promise<UserSessionData> => {
-    session_id = session_id ?? cookies().get(lucia.sessionCookieName)?.value;
+export const getUserSessionData = cache(
+  async (rawSessionId?: string): Promise<UserSessionData> => {
+    const session_id =
+      rawSessionId ?? cookies().get(lucia.sessionCookieName)?.value;
     if (!session_id) {
-      return {
-        user: null,
-        session: null,
-      };
+      return null;
     }
 
     const result = await lucia.validateSession(session_id);
@@ -47,6 +45,7 @@ export const userSessionData = cache(
           sessionCookie.attributes
         );
       }
+
       if (!result.session) {
         const sessionCookie = lucia.createBlankSessionCookie();
         cookies().set(
@@ -58,19 +57,9 @@ export const userSessionData = cache(
     } catch {}
 
     if (!result.user || !result.session) {
-      return {
-        user: null,
-        session: null,
-      };
+      return null;
     }
 
-    return {
-      user: result.user,
-      session: {
-        id: result.session.id,
-        user_id: result.session.userId,
-        expires_at: result.session.expiresAt,
-      },
-    };
+    return result;
   }
 );

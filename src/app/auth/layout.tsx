@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
-import { userSessionData } from "#/auth";
+import { getUserSessionData } from "#/auth";
 import AuthCard from "#/components/auth/AuthCard";
 
 export const metadata: Metadata = {
@@ -13,8 +13,8 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const user = await userSessionData();
-  if (user.user && user.session) return redirect("/");
+  const user = await getUserSessionData();
+  if (user) return redirect("/");
 
   return (
     <div className="flex justify-center items-center h-screen">

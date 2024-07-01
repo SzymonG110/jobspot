@@ -6,8 +6,8 @@ import { hashSync } from "bcrypt";
 export const CreateUserSchema = z.object({
   email: z.string().trim().email(),
   password: z.string().trim().min(8).max(50),
-  first_name: z.string().trim().min(2).max(50),
-  last_name: z.string().trim().min(2).max(50),
+  firstName: z.string().trim().min(2).max(50),
+  lastName: z.string().trim().min(2).max(50),
 });
 
 export type CreateUser = z.infer<typeof CreateUserSchema>;
@@ -18,27 +18,27 @@ export async function POST(req: Request) {
   if (!values.success)
     return new Response(JSON.stringify(values.error), { status: 400 });
 
-  const password_hash = hashSync(values.data.password, 10);
+  const passwordHash = hashSync(values.data.password, 10);
 
   try {
     const user = await kysely
       .insertInto("User")
       .values({
         email: values.data.email,
-        first_name: values.data.first_name,
-        last_name: values.data.last_name,
-        password_hash: password_hash,
+        first_name: values.data.firstName,
+        last_name: values.data.lastName,
+        password_hash: passwordHash,
       })
       .returning("id")
       .executeTakeFirstOrThrow();
 
     const session = await lucia.createSession(user.id, {});
-    const session_cookie = lucia.createSessionCookie(session.id);
+    const sessionCookie = lucia.createSessionCookie(session.id);
 
     return new Response(JSON.stringify(session), {
       status: 200,
       headers: {
-        "Set-Cookie": session_cookie.serialize(),
+        "Set-Cookie": sessionCookie.serialize(),
       },
     });
   } catch (e) {

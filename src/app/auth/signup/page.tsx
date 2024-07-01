@@ -4,11 +4,10 @@ import { useFormik } from "formik";
 import { Button, Input } from "@nextui-org/react";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
-import { revalidatePath } from "next/cache";
 import { CreateUser } from "#/app/api/auth/signup/route";
 
 export default function Page() {
-  const { mutate, isPending: is_pending } = useMutation({
+  const { mutate, isPending } = useMutation({
     mutationFn: (values: CreateUser) => axios.post("/api/auth/signup", values),
     onSuccess: (data) => {
       if (data.status === 200) location.href = "/";
@@ -18,8 +17,8 @@ export default function Page() {
   const formik = useFormik({
     initialValues: {
       email: "",
-      first_name: "",
-      last_name: "",
+      firstName: "",
+      lastName: "",
       password: "",
     },
     onSubmit: async (values) => {
@@ -37,6 +36,7 @@ export default function Page() {
         name="email"
         onChange={formik.handleChange}
         value={formik.values.email}
+        autoFocus
       />
 
       <Input
@@ -45,7 +45,7 @@ export default function Page() {
         id="first_name"
         name="first_name"
         onChange={formik.handleChange}
-        value={formik.values.first_name}
+        value={formik.values.firstName}
       />
 
       <Input
@@ -54,7 +54,7 @@ export default function Page() {
         id="last_name"
         name="last_name"
         onChange={formik.handleChange}
-        value={formik.values.last_name}
+        value={formik.values.lastName}
       />
 
       <Input
@@ -67,7 +67,7 @@ export default function Page() {
         value={formik.values.password}
       />
 
-      <Button type="submit" color="primary" isDisabled={is_pending}>
+      <Button type="submit" color="primary" isDisabled={isPending}>
         Submit
       </Button>
     </form>

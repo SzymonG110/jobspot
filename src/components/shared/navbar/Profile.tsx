@@ -8,11 +8,22 @@ import {
   Link,
   User,
 } from "@nextui-org/react";
-import { useUserSession } from "#/contexts/auth/UserSessionProvider";
+import { useMutation } from "@tanstack/react-query";
+import axios from "axios";
+import { useUserSession } from "#/hooks/useUserSession";
 
 export default function NavProfile() {
-  const user = useUserSession();
-  if (!user.user || !user.session) return null; // TODO: Add a loading skeleton
+  const { data: user } = useUserSession();
+
+  const { mutate: logout } = useMutation({
+    mutationKey: ["userSessionLogout"],
+    mutationFn: async () => await axios.get("/api/auth/logout"),
+    onSuccess: (data) => {
+      if (data.status === 200) location.href = "/";
+    },
+  });
+
+  if (!user) return null; // TODO: Add a loading skeleton
 
   return (
     <Dropdown>
@@ -39,7 +50,7 @@ export default function NavProfile() {
         </DropdownItem>
         <DropdownItem
           as={Link}
-          href="/candidates"
+          href="/candidacies"
           className="text-black dark:text-white"
         >
           My Candidates
@@ -52,7 +63,7 @@ export default function NavProfile() {
         >
           User Settings
         </DropdownItem>
-        <DropdownItem color="danger" onClick={() => user.logout()}>
+        <DropdownItem color="danger" onClick={() => logout()}>
           Log Out
         </DropdownItem>
       </DropdownMenu>
