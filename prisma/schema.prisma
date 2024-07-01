@@ -1,0 +1,29 @@
+generator kysely {
+  provider     = "prisma-kysely"
+  output       = "../src/database"
+  fileName     = "types.ts"
+  enumFileName = "enums.ts"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String        @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  email         String        @unique
+  password_hash String
+  first_name    String
+  last_name     String
+  sessions      UserSession[]
+}
+
+model UserSession {
+  id         String   @id
+  expires_at DateTime @db.Timestamptz
+  user_id    String   @db.Uuid
+  user       User     @relation(fields: [user_id], references: [id])
+
+  @@index([user_id])
+}

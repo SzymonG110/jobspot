@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
-import { Providers } from "./providers";
+import { Montserrat } from "next/font/google";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import "../styles/globals.css";
+import { Providers as ProvidersTSX} from "#/app/Providers";
+import Navbar from "#/components/shared/Navbar";
 
-const inter = Inter({ subsets: ["latin"] });
+const montserrat = Montserrat({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "JobSpot",
@@ -17,8 +19,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pl-PL" className="light">
-      <body className={inter.className}>
-        <Providers>{children}</Providers>
+      <body className={`${montserrat.className} min-h-screen`}>
+        <ProvidersTSX>
+          <ReactQueryDevtools initialIsOpen={false} />
+          <Navbar />
+          {children}
+        </ProvidersTSX>
       </body>
     </html>
   );
