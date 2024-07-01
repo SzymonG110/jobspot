@@ -2,7 +2,7 @@ import { cache } from "react";
 import { cookies } from "next/headers";
 import { Lucia } from "lucia";
 import { NodePostgresAdapter } from "@lucia-auth/adapter-postgresql";
-import { pool } from "#/database/pg";
+import { pool } from "#/lib/database/pg";
 import { UserSessionData } from "#/types/global";
 
 const adapter = new NodePostgresAdapter(pool, {

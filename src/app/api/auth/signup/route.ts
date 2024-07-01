@@ -1,6 +1,6 @@
 import { z } from "zod";
-import { lucia } from "#/auth";
-import { kysely } from "#/database/kysely";
+import { lucia } from "#/lib/auth";
+import { kysely } from "#/lib/database/kysely";
 import { hashSync } from "bcrypt";
 
 export const CreateUserSchema = z.object({

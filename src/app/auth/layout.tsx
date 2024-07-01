@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
-import { getUserSessionData } from "#/auth";
+import { getUserSessionData } from "#/lib/auth";
 import AuthCard from "#/components/auth/AuthCard";
 
 export const metadata: Metadata = {
