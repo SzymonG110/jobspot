@@ -20,19 +20,24 @@ const categories = [
 export default function Search() {
   return (
     <div className="flex w-full gap-5">
-      <Input placeholder="Find..." />
+      <Input placeholder="Find..." aria-label="Company name, position..." />
 
       <Select
         placeholder="Select a category"
         selectionMode="multiple"
         className="max-w-xs"
+        aria-label="Category"
       >
         {categories.map((category) => (
           <SelectItem key={category.id}>{category.name}</SelectItem>
         ))}
       </Select>
 
-      <Input placeholder="Localization..." className="max-w-xs" />
+      <Input
+        placeholder="Localization..."
+        aria-label="Localization"
+        className="max-w-xs"
+      />
     </div>
   );
 }

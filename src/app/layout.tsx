@@ -19,7 +19,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pl-PL" className="light">
+    <html lang="en-EN" className="light">
       <body className={`${montserrat.className} min-h-screen`}>
         <ProvidersTSX>
           <ReactQueryDevtools initialIsOpen={false} />
