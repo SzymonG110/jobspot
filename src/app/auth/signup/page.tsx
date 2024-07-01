@@ -11,10 +11,7 @@ export default function Page() {
   const { mutate, isPending: is_pending } = useMutation({
     mutationFn: (values: CreateUser) => axios.post("/api/auth/signup", values),
     onSuccess: (data) => {
-      if (data.status === 200) {
-        revalidatePath("/");
-        location.href = "/";
-      }
+      if (data.status === 200) location.href = "/";
     },
   });
 
@@ -70,7 +67,7 @@ export default function Page() {
         value={formik.values.password}
       />
 
-      <Button type="submit" color="primary">
+      <Button type="submit" color="primary" isDisabled={is_pending}>
         Submit
       </Button>
     </form>

@@ -34,10 +34,7 @@ export function UserSessionProvider({
       return axios.get("/api/auth/logout");
     },
     onSuccess: (data) => {
-      if (data.status === 200) {
-        revalidatePath("/");
-        location.href = "/";
-      }
+      if (data.status === 200) location.href = "/";
     },
   });
 

@@ -18,7 +18,11 @@ export default function Navbar() {
   return (
     <NextUiNavbar className="absolute top-0">
       <NavbarContent>
-        <NavbarBrand as={Link} href="/" className="gap-2 text-black">
+        <NavbarBrand
+          as={Link}
+          href="/"
+          className="gap-2 text-black dark:text-white"
+        >
           <Image
             src="/img/briefcase.svg"
             alt="JobSpot"

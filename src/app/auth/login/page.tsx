@@ -11,10 +11,7 @@ export default function Page() {
   const { mutate, isPending: is_pending } = useMutation({
     mutationFn: (values: LoginUser) => axios.post("/api/auth/login", values),
     onSuccess: (data) => {
-      if (data.status === 200) {
-        revalidatePath("/");
-        location.href = "/";
-      }
+      if (data.status === 200) location.href = "/";
     },
   });
 
