@@ -11,8 +11,8 @@ export default function Container({
 
   return (
     <div
-      className={`w-[80vw] mx-auto container ${
-        !path.includes("auth") ? "mt-20" : ""
+      className={`2xl:max-w-[80vw] mx-auto container ${
+        !path.includes("auth") ? "mt-4 lg:mt-20 px-5" : ""
       }`}
     >
       {children}

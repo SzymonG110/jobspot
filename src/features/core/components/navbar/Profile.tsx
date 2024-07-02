@@ -26,16 +26,28 @@ export default function NavProfile() {
   return (
     <Dropdown>
       <DropdownTrigger>
-        <User
-          as="button"
-          avatarProps={{
-            isBordered: true,
-            // src: userSession.avatar,
-          }}
-          className="transition-transform font-bold"
-          name={`${userSession.user.first_name} ${userSession.user.last_name}`}
-          description={userSession.user.email}
-        />
+        <div>
+          <User
+            as="button"
+            avatarProps={{
+              isBordered: true,
+              // src: userSession.avatar,
+            }}
+            className="transition-transform font-bold hidden sm:flex"
+            name={`${userSession.user.first_name} ${userSession.user.last_name}`}
+            description={userSession.user.email}
+          />
+
+          <User
+            as="button"
+            avatarProps={{
+              isBordered: true,
+              // src: userSession.avatar,
+            }}
+            className="transition-transform font-bold sm:hidden"
+            name=""
+          />
+        </div>
       </DropdownTrigger>
 
       <DropdownMenu aria-label="User Actions" variant="flat">
@@ -73,7 +85,7 @@ export function NavProfileSkeleton() {
   return (
     <div className="animate-pulse flex items-center space-x-4">
       <div className="w-10 h-10 bg-gray-300 rounded-full"></div>
-      <div>
+      <div className="hidden sm:block">
         <div className="w-32 h-4 bg-gray-300 rounded-md mb-2"></div>
         <div className="w-48 h-3 bg-gray-300 rounded-md"></div>
       </div>

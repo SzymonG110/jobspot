@@ -19,13 +19,13 @@ const categories = [
 
 export default function Search() {
   return (
-    <div className="flex w-full gap-5">
+    <div className="flex w-full gap-5 flex-col lg:flex-row px-3 md:px-0">
       <Input placeholder="Find..." aria-label="Company name, position..." />
 
       <Select
         placeholder="Select a category"
         selectionMode="multiple"
-        className="max-w-xs"
+        className="lg:max-w-xs"
         aria-label="Category"
       >
         {categories.map((category) => (
@@ -36,7 +36,7 @@ export default function Search() {
       <Input
         placeholder="Localization..."
         aria-label="Localization"
-        className="max-w-xs"
+        className="lg:max-w-xs"
       />
     </div>
   );
