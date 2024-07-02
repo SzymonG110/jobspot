@@ -40,8 +40,8 @@ export default function Page() {
       <Input
         label="First Name"
         placeholder="Enter your first name"
-        id="first_name"
-        name="first_name"
+        id="firstName"
+        name="firstName"
         onChange={formik.handleChange}
         value={formik.values.firstName}
       />
@@ -49,8 +49,8 @@ export default function Page() {
       <Input
         label="Last Name"
         placeholder="Enter your last name"
-        id="last_name"
-        name="last_name"
+        id="lastName"
+        name="lastName"
         onChange={formik.handleChange}
         value={formik.values.lastName}
       />

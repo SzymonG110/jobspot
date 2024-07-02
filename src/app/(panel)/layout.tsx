@@ -3,8 +3,7 @@ import { redirect } from "next/navigation";
 import { getUserSessionData } from "#/features/auth/lib/auth";
 
 export const metadata: Metadata = {
-  title: "JobSpot - Auth",
-  description: "Find your dream job",
+  title: "JobSpot - Panel",
 };
 
 export default async function RootLayout({

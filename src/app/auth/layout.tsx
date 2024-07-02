@@ -5,7 +5,6 @@ import AuthCard from "#/features/auth/components/AuthCard";
 
 export const metadata: Metadata = {
   title: "JobSpot - Auth",
-  description: "Find your dream job",
 };
 
 export default async function RootLayout({

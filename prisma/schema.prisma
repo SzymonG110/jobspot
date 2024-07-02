@@ -16,7 +16,12 @@ model User {
   password_hash String
   first_name    String
   last_name     String
+  created_at    DateTime      @default(dbgenerated("now()")) @db.Timestamptz
+  updated_at    DateTime      @default(dbgenerated("now()")) @db.Timestamptz
   sessions      UserSession[]
+  CompanyUser   CompanyUser[]
+
+  @@index([email])
 }
 
 model UserSession {
@@ -26,4 +31,23 @@ model UserSession {
   user       User     @relation(fields: [user_id], references: [id])
 
   @@index([user_id])
+}
+
+model CompanyUser {
+  company_id String  @db.Uuid
+  user_id    String  @db.Uuid
+  company    Company @relation(fields: [company_id], references: [id])
+  user       User    @relation(fields: [user_id], references: [id])
+
+  @@id([company_id, user_id])
+  @@index([user_id])
+}
+
+model Company {
+  id          String        @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name        String        @unique
+  logo_buffer String
+  created_at  DateTime      @default(dbgenerated("now()")) @db.Timestamptz
+  updated_at  DateTime      @default(dbgenerated("now()")) @db.Timestamptz
+  CompanyUser CompanyUser[]
 }
