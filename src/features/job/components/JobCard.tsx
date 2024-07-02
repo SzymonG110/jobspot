@@ -19,7 +19,7 @@ export default function JobCard({}: {}) {
           <p>Katowice, Poland</p>
           <p>IT</p>
 
-          <p className="absolute bottom-2 font-semibold text-foreground-400 text-sm">
+          <p className="absolute bottom-2 top-4 font-semibold text-foreground-400 text-sm">
             Published: 21 may 2021
           </p>
         </div>

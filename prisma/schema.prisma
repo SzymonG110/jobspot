@@ -1,8 +1,8 @@
 generator kysely {
   provider     = "prisma-kysely"
-  output       = "../src/database"
-  fileName     = "types.ts"
-  enumFileName = "enums.ts"
+  output       = "../src/features/core/types"
+  fileName     = "database.ts"
+  enumFileName = "database-enums.ts"
 }
 
 datasource db {

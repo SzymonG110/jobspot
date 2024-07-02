@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
-import { getUserSessionData } from "#/lib/auth";
-import AuthCard from "#/components/auth/AuthCard";
+import { getUserSessionData } from "#/features/auth/lib/auth";
+import AuthCard from "#/features/auth/components/AuthCard";
 
 export const metadata: Metadata = {
   title: "JobSpot - Auth",

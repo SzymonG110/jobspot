@@ -1,5 +1,5 @@
-import Search from "#/components/home/Search";
-import JobCard from "#/components/home/JobCard";
+import Search from "#/features/job/components/Search";
+import JobCard from "#/features/job/components/JobCard";
 
 export default function Page() {
   return (

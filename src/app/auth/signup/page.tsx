@@ -3,15 +3,13 @@
 import { useFormik } from "formik";
 import { Button, Input } from "@nextui-org/react";
 import { useMutation } from "@tanstack/react-query";
-import axios from "axios";
-import { CreateUser } from "#/app/api/auth/signup/route";
+import { CreateUser } from "#/features/auth/schemas/signup";
+import { signUp } from "#/features/auth/actions/signUp";
 
 export default function Page() {
   const { mutate, isPending } = useMutation({
-    mutationFn: (values: CreateUser) => axios.post("/api/auth/signup", values),
-    onSuccess: (data) => {
-      if (data.status === 200) location.href = "/";
-    },
+    mutationFn: (values: CreateUser) => signUp(values),
+    onSuccess: (data) => data.ok && (location.href = "/"),
   });
 
   const formik = useFormik({

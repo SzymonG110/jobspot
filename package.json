@@ -16,8 +16,8 @@
     "@tabler/icons-react": "^3.7.0",
     "@tanstack/react-query": "^5.49.2",
     "@tanstack/react-query-devtools": "^5.49.2",
-    "axios": "^1.7.2",
     "bcrypt": "^5.1.1",
+    "clsx": "^2.1.1",
     "formik": "^2.4.6",
     "framer-motion": "^11.2.12",
     "kysely": "^0.27.3",
@@ -27,6 +27,7 @@
     "prisma-kysely": "^1.8.0",
     "react": "^18",
     "react-dom": "^18",
+    "tailwind-merge": "^2.3.0",
     "zod": "^3.23.8"
   },
   "devDependencies": {

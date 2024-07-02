@@ -9,18 +9,16 @@ import {
   User,
 } from "@nextui-org/react";
 import { useMutation } from "@tanstack/react-query";
-import axios from "axios";
-import { useUserSession } from "#/hooks/useUserSession";
+import { useUserSession } from "#/features/user/hooks/useUserSession";
+import { logout as logoutAuth } from "#/features/auth/actions/signOut";
 
 export default function NavProfile() {
   const { data: user } = useUserSession();
 
   const { mutate: logout } = useMutation({
     mutationKey: ["userSessionLogout"],
-    mutationFn: async () => await axios.get("/api/auth/logout"),
-    onSuccess: (data) => {
-      if (data.status === 200) location.href = "/";
-    },
+    mutationFn: () => logoutAuth(),
+    onSuccess: (data) => data.ok && (location.href = "/"),
   });
 
   if (!user) return null; // TODO: Add a loading skeleton

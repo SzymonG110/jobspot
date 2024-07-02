@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
-import { getUserSessionData } from "#/lib/auth";
+import { getUserSessionData } from "#/features/auth/lib/auth";
 
 export const metadata: Metadata = {
   title: "JobSpot - Auth",

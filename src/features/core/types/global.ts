@@ -1,6 +1,6 @@
 import { Selectable } from "kysely";
-import { lucia } from "#/lib/auth";
-import { User } from "#/lib/database/types";
+import { lucia } from "#/features/auth/lib/auth";
+import { User } from "#/features/core/types/database";
 import { Session } from "lucia";
 
 declare module "lucia" {

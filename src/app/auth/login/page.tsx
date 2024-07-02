@@ -2,16 +2,14 @@
 
 import { useFormik } from "formik";
 import { Button, Input } from "@nextui-org/react";
-import axios from "axios";
 import { useMutation } from "@tanstack/react-query";
-import { LoginUser } from "#/app/api/auth/login/route";
+import { SignInUser } from "#/features/auth/schemas/login";
+import { signIn } from "#/features/auth/actions/signIn";
 
 export default function Page() {
   const { mutate, isPending } = useMutation({
-    mutationFn: (values: LoginUser) => axios.post("/api/auth/login", values),
-    onSuccess: (data) => {
-      if (data.status === 200) location.href = "/";
-    },
+    mutationFn: (values: SignInUser) => signIn(values),
+    onSuccess: (data) => data.ok && (location.href = "/"),
   });
 
   const formik = useFormik({
