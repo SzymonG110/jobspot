@@ -19,7 +19,12 @@ export async function getCompany(rawUserId?: string) {
       .selectFrom("CompanyUser")
       .where("CompanyUser.user_id", "=", userId)
       .innerJoin("Company", "Company.id", "CompanyUser.company_id")
-      .select(["Company.id", "Company.name", "Company.logo_buffer"])
+      .select([
+        "Company.id",
+        "Company.name",
+        "Company.logo_buffer",
+        "Company.created_at",
+      ])
       .execute();
 
     return {

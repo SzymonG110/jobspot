@@ -25,7 +25,7 @@ export default function Navbar() {
         >
           <Image
             src="/img/briefcase.svg"
-            alt="JobSpot"
+            alt="Logo"
             width={30}
             height={30}
             className="rounded-none"
