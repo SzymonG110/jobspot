@@ -13,7 +13,7 @@ import { useUserSession } from "#/features/user/hooks/useUserSession";
 import { logout as logoutAuth } from "#/features/auth/actions/signOut";
 
 export default function NavProfile() {
-  const { data: user } = useUserSession();
+  const { userSession, isLoading } = useUserSession();
 
   const { mutate: logout } = useMutation({
     mutationKey: ["userSessionLogout"],
@@ -21,7 +21,7 @@ export default function NavProfile() {
     onSuccess: (data) => data.ok && (location.href = "/"),
   });
 
-  if (!user) return null; // TODO: Add a loading skeleton
+  if (!userSession || isLoading) return <NavProfileSkeleton />;
 
   return (
     <Dropdown>
@@ -30,11 +30,11 @@ export default function NavProfile() {
           as="button"
           avatarProps={{
             isBordered: true,
-            // src: user.avatar,
+            // src: userSession.avatar,
           }}
           className="transition-transform font-bold"
-          name={`${user.user.first_name} ${user.user.last_name}`}
-          description={user.user.email}
+          name={`${userSession.user.first_name} ${userSession.user.last_name}`}
+          description={userSession.user.email}
         />
       </DropdownTrigger>
 
@@ -66,5 +66,17 @@ export default function NavProfile() {
         </DropdownItem>
       </DropdownMenu>
     </Dropdown>
+  );
+}
+
+export function NavProfileSkeleton() {
+  return (
+    <div className="animate-pulse flex items-center space-x-4">
+      <div className="w-10 h-10 bg-gray-300 rounded-full"></div>
+      <div>
+        <div className="w-32 h-4 bg-gray-300 rounded-md mb-2"></div>
+        <div className="w-48 h-3 bg-gray-300 rounded-md"></div>
+      </div>
+    </div>
   );
 }

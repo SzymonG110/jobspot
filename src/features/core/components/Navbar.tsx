@@ -13,7 +13,7 @@ import NavProfile from "#/features/core/components/navbar/Profile";
 import { useUserSession } from "#/features/user/hooks/useUserSession";
 
 export default function Navbar() {
-  const { data: user } = useUserSession();
+  const { userSession, isLoading } = useUserSession();
 
   return (
     <NextUiNavbar>
@@ -36,7 +36,7 @@ export default function Navbar() {
 
       <NavbarContent justify="end">
         <NavbarItem>
-          {user ? ( // if loading is true, show loading spinner
+          {userSession || isLoading ? (
             <NavProfile />
           ) : (
             <Button as={Link} color="primary" href="/auth/login" variant="flat">
