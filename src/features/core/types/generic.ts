@@ -1,1 +1,1 @@
-export type Entered<T> = Exclude<Required<T>, undefined>
+export type Entered<T> = Exclude<Required<T>, undefined>;

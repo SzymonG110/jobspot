@@ -8,7 +8,9 @@ import { CreateUserSchema, CreateUser } from "#/features/auth/schemas/signup";
 
 export async function signUp(data: CreateUser) {
   const values = CreateUserSchema.safeParse(data);
-  if (!values.success) return { ok: false, error: values.error };
+  if (!values.success) {
+    return { ok: false, error: values.error };
+  }
 
   const passwordHash = hashSync(values.data.password, 10);
 
@@ -30,7 +32,7 @@ export async function signUp(data: CreateUser) {
     cookies().set(
       sessionCookie.name,
       sessionCookie.value,
-      sessionCookie.attributes
+      sessionCookie.attributes,
     );
 
     return { ok: true };

@@ -30,7 +30,7 @@ export const lucia = new Lucia(adapter, {
 });
 
 async function fetchUserSessionData(
-  rawSessionId?: string
+  rawSessionId?: string,
 ): Promise<UserSessionData | null> {
   const session_id =
     rawSessionId ?? cookies().get(lucia.sessionCookieName)?.value;
@@ -45,7 +45,7 @@ async function fetchUserSessionData(
       cookies().set(
         sessionCookie.name,
         sessionCookie.value,
-        sessionCookie.attributes
+        sessionCookie.attributes,
       );
     }
 
@@ -54,7 +54,7 @@ async function fetchUserSessionData(
       cookies().set(
         sessionCookie.name,
         sessionCookie.value,
-        sessionCookie.attributes
+        sessionCookie.attributes,
       );
     }
   } catch {}

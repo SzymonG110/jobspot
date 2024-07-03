@@ -3,7 +3,13 @@
 import { getUserSessionData } from "#/features/auth/lib/auth";
 import { kysely } from "#/features/core/lib/kysely";
 
-export async function getCompany(rawUserId?: string) {
+export async function getCompany({
+  rawUserId,
+  companyId,
+}: {
+  rawUserId?: string;
+  companyId?: string;
+}) {
   const session = await getUserSessionData();
   if (!session) {
     return {
@@ -18,13 +24,11 @@ export async function getCompany(rawUserId?: string) {
     const companies = await kysely
       .selectFrom("CompanyUser")
       .where("CompanyUser.user_id", "=", userId)
+      .$if(!!companyId, (qb) =>
+        qb.where("CompanyUser.company_id", "=", companyId!),
+      )
       .innerJoin("Company", "Company.id", "CompanyUser.company_id")
-      .select([
-        "Company.id",
-        "Company.name",
-        "Company.logo_buffer",
-        "Company.created_at",
-      ])
+      .selectAll("Company")
       .execute();
 
     return {

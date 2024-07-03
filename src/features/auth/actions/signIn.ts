@@ -8,7 +8,9 @@ import { SignInUserSchema, SignInUser } from "#/features/auth/schemas/login";
 
 export async function signIn(data: SignInUser) {
   const values = SignInUserSchema.safeParse(data);
-  if (!values.success) return { ok: false, error: values.error };
+  if (!values.success) {
+    return { ok: false, error: values.error };
+  }
 
   try {
     const user = await kysely
@@ -18,7 +20,9 @@ export async function signIn(data: SignInUser) {
       .executeTakeFirstOrThrow();
 
     const isPasswordVerified = compareSync(data.password, user.password_hash);
-    if (!isPasswordVerified) throw new Error("Password incorrect");
+    if (!isPasswordVerified) {
+      return { ok: false, error: "Email or password incorrect" };
+    }
 
     const session = await lucia.createSession(user.id, {});
     const sessionCookie = lucia.createSessionCookie(session.id);
@@ -26,7 +30,7 @@ export async function signIn(data: SignInUser) {
     cookies().set(
       sessionCookie.name,
       sessionCookie.value,
-      sessionCookie.attributes
+      sessionCookie.attributes,
     );
 
     return { ok: false, session };

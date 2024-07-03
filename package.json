@@ -1,13 +1,24 @@
 {
   "name": "jobspot",
   "license": "MIT",
+  "author": {
+    "name": "Szymon Górnikowski",
+    "email": "szymon@gornikowski.pl",
+    "url": "https://szymon.gornikowski.pl"
+  },
   "scripts": {
     "dev": "next dev --turbo",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "run-p -l tsc:check eslint:check prettier:check",
     "db:migrate": "npx prisma migrate dev",
-    "db:push": "npx prisma db push"
+    "db:push": "npx prisma db push",
+    "tsc:check": "tsc",
+    "dir": "dir",
+    "prettier:fix": "npx prettier ./src/**/*.ts ./src/**/*.tsx --write",
+    "prettier:check": "npx prettier ./src/**/*.ts ./src/**/*.tsx --check",
+    "eslint:check": "npx eslint --ext .ts,.tsx .",
+    "eslint:fix": "npx eslint --ext .ts,.tsx . --fix"
   },
   "dependencies": {
     "@lucia-auth/adapter-postgresql": "^3.1.2",
@@ -38,6 +49,9 @@
     "@types/react-dom": "^18",
     "eslint": "^8",
     "eslint-config-next": "14.2.4",
+    "eslint-plugin-no-relative-import-paths": "^1.5.5",
+    "husky": "^9.0.11",
+    "npm-run-all": "^4.1.5",
     "postcss": "^8",
     "prisma": "^5.16.1",
     "tailwindcss": "^3.4.1",

@@ -1,3 +1,14 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": "next/core-web-vitals",
+  "plugins": ["no-relative-import-paths"],
+  "rules": {
+    "curly": ["error", "all"], // enforce consistent brace style for all control statements as block
+
+    "max-depth": ["error", 3], // enforce a maximum depth that blocks can be nested
+
+    "no-relative-import-paths/no-relative-import-paths": [
+      "error",
+      { "allowSameFolder": false, "rootDir": "./src", "prefix": "#" }
+    ] // disallow relative import paths
+  }
 }

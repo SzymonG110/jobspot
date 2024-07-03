@@ -9,7 +9,7 @@ import Loading from "#/features/core/components/Loading";
 export default function Page() {
   const { data, isLoading } = useQuery({
     queryKey: ["getCompany"],
-    queryFn: () => getCompany(),
+    queryFn: () => getCompany({}),
   });
 
   return (

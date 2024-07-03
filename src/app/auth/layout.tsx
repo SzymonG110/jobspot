@@ -13,7 +13,9 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const user = await getUserSessionData();
-  if (user) return redirect("/");
+  if (user) {
+    return redirect("/");
+  }
 
   return (
     <div className="flex justify-center items-center h-screen">

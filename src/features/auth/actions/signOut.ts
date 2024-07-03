@@ -6,7 +6,7 @@ import { lucia } from "#/features/auth/lib/auth";
 export async function logout() {
   try {
     await lucia.invalidateSession(
-      cookies().get(lucia.sessionCookieName)!.value
+      cookies().get(lucia.sessionCookieName)!.value,
     );
     return { ok: true };
   } catch {

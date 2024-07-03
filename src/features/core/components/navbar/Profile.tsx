@@ -21,7 +21,9 @@ export default function NavProfile() {
     onSuccess: (data) => data.ok && (location.href = "/"),
   });
 
-  if (!userSession || isLoading) return <NavProfileSkeleton />;
+  if (!userSession || isLoading) {
+    return <NavProfileSkeleton />;
+  }
 
   return (
     <Dropdown>
