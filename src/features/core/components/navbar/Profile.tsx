@@ -9,8 +9,8 @@ import {
   User,
 } from "@nextui-org/react";
 import { useMutation } from "@tanstack/react-query";
-import { useUserSession } from "#/features/user/hooks/useUserSession";
 import { logout as logoutAuth } from "#/features/auth/actions/signOut";
+import { useUserSession } from "#/features/user/hooks/useUserSession";
 
 export default function NavProfile() {
   const { userSession, isLoading } = useUserSession();

@@ -3,8 +3,8 @@
 import { compareSync } from "bcrypt";
 import { cookies } from "next/headers";
 import { lucia } from "#/features/auth/lib/auth";
-import { kysely } from "#/features/core/lib/kysely";
 import { SignInUserSchema, SignInUser } from "#/features/auth/schemas/login";
+import { kysely } from "#/features/core/lib/kysely";
 
 export async function signIn(data: SignInUser) {
   const values = SignInUserSchema.safeParse(data);

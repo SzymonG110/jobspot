@@ -1,9 +1,9 @@
 "use client";
 
 import { useQuery } from "@tanstack/react-query";
+import { getCompany } from "#/features/company/actions/getCompany";
 import AddCompany from "#/features/company/components/AddCompany";
 import Company from "#/features/company/components/Company";
-import { getCompany } from "#/features/company/actions/getCompany";
 import Loading from "#/features/core/components/Loading";
 
 export default function Page() {

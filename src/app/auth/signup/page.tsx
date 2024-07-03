@@ -1,10 +1,10 @@
 "use client";
 
-import { useFormik } from "formik";
 import { Button, Input } from "@nextui-org/react";
 import { useMutation } from "@tanstack/react-query";
-import { CreateUser } from "#/features/auth/schemas/signup";
+import { useFormik } from "formik";
 import { signUp } from "#/features/auth/actions/signUp";
+import { CreateUser } from "#/features/auth/schemas/signup";
 
 export default function Page() {
   const { mutate, isPending } = useMutation({

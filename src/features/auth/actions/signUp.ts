@@ -3,8 +3,8 @@
 import { hashSync } from "bcrypt";
 import { cookies } from "next/headers";
 import { lucia } from "#/features/auth/lib/auth";
-import { kysely } from "#/features/core/lib/kysely";
 import { CreateUserSchema, CreateUser } from "#/features/auth/schemas/signup";
+import { kysely } from "#/features/core/lib/kysely";
 
 export async function signUp(data: CreateUser) {
   const values = CreateUserSchema.safeParse(data);

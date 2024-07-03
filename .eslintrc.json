@@ -1,5 +1,5 @@
 {
-  "extends": "next/core-web-vitals",
+  "extends": ["next/core-web-vitals", "plugin:prettier/recommended"],
   "plugins": ["no-relative-import-paths"],
   "rules": {
     "curly": ["error", "all"], // enforce consistent brace style for all control statements as block
@@ -9,6 +9,18 @@
     "no-relative-import-paths/no-relative-import-paths": [
       "error",
       { "allowSameFolder": false, "rootDir": "./src", "prefix": "#" }
-    ] // disallow relative import paths
+    ], // disallow relative import paths
+
+    "import/order": [
+      "error",
+      {
+        "groups": [["builtin", "external"], "internal"], // nodejs built-in modules, packages, absolute imports
+        "newlines-between": "never",
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
+      }
+    ]
   }
 }

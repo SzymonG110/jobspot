@@ -1,7 +1,7 @@
 import { Selectable } from "kysely";
+import { Session } from "lucia";
 import { lucia } from "#/features/auth/lib/auth";
 import { User } from "#/features/core/types/database";
-import { Session } from "lucia";
 
 declare module "lucia" {
   interface Register {

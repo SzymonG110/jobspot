@@ -1,11 +1,11 @@
 "use server";
 
 import { getUserSessionData } from "#/features/auth/lib/auth";
-import { kysely } from "#/features/core/lib/kysely";
 import {
   AddCompany,
   AddCompanySchema,
 } from "#/features/company/schemas/addCompany";
+import { kysely } from "#/features/core/lib/kysely";
 
 export async function createCompany(data: AddCompany) {
   const session = await getUserSessionData();

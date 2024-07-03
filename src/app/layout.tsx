@@ -1,9 +1,9 @@
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import { Providers as ProvidersTSX } from "#/features/core/components/Providers";
-import Navbar from "#/features/core/components/Navbar";
 import Container from "#/features/core/components/Container";
+import Navbar from "#/features/core/components/Navbar";
+import { Providers as ProvidersTSX } from "#/features/core/components/Providers";
 import "#/features/core/styles/globals.css";
 
 const montserrat = Montserrat({ subsets: ["latin"] });
