@@ -1,6 +1,6 @@
 "user server";
 
-import { getUserSessionData } from "#/features/auth/lib/auth";
+import { getUserSessionData } from "#/features/auth/libs/fetchSession";
 import { UserSessionData } from "#/features/core/types/global";
 
 export async function withAuthorization<T>(

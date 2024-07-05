@@ -2,7 +2,7 @@
 
 import { compareSync } from "bcrypt";
 import { cookies } from "next/headers";
-import { lucia } from "#/features/auth/lib/auth";
+import { lucia } from "#/features/auth/libs/auth";
 import { SignInUserSchema, SignInUser } from "#/features/auth/schemas/login";
 import { kysely } from "#/features/core/lib/kysely";
 

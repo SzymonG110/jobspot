@@ -36,14 +36,16 @@ export default function AddCompany() {
 
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     const selectedFile = event.currentTarget.files![0];
-    if (selectedFile) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        const result = reader.result as string;
-        formik.setFieldValue("logo_buffer", result);
-      };
-      reader.readAsDataURL(selectedFile);
+    if (!selectedFile) {
+      return;
     }
+
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      const result = reader.result as string;
+      formik.setFieldValue("logo_buffer", result);
+    };
+    reader.readAsDataURL(selectedFile);
   };
 
   return (
@@ -77,7 +79,7 @@ export default function AddCompany() {
                   name="logo_buffer"
                   onChange={handleFileChange}
                 />
-                {formik.values.logo_buffer !== "" && (
+                {formik.values.logo_buffer !== "" ? (
                   <Image
                     src={formik.values.logo_buffer}
                     alt="Avatar Preview"
@@ -85,7 +87,7 @@ export default function AddCompany() {
                     width={200}
                     height={200}
                   />
-                )}
+                ) : null}
               </ModalBody>
               <ModalFooter>
                 <Button color="danger" variant="light" onPress={onClose}>

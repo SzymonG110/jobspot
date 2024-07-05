@@ -2,7 +2,7 @@
 
 import { hashSync } from "bcrypt";
 import { cookies } from "next/headers";
-import { lucia } from "#/features/auth/lib/auth";
+import { lucia } from "#/features/auth/libs/auth";
 import { CreateUserSchema, CreateUser } from "#/features/auth/schemas/signup";
 import { kysely } from "#/features/core/lib/kysely";
 

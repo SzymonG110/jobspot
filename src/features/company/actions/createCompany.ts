@@ -1,6 +1,6 @@
 "use server";
 
-import { getUserSessionData } from "#/features/auth/lib/auth";
+import { getUserSessionData } from "#/features/auth/libs/fetchSession";
 import {
   AddCompany,
   AddCompanySchema,

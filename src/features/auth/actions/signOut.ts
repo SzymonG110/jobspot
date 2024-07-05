@@ -1,7 +1,7 @@
 "use server";
 
 import { cookies } from "next/headers";
-import { lucia } from "#/features/auth/lib/auth";
+import { lucia } from "#/features/auth/libs/auth";
 
 export async function logout() {
   try {

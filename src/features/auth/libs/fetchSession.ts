@@ -1,33 +1,7 @@
-import { NodePostgresAdapter } from "@lucia-auth/adapter-postgresql";
-import { Lucia } from "lucia";
 import { cookies } from "next/headers";
 import { cache } from "react";
-import { pool } from "#/features/core/lib/pg";
+import { lucia } from "#/features/auth/libs/auth";
 import { UserSessionData } from "#/features/core/types/global";
-
-const adapter = new NodePostgresAdapter(pool, {
-  session: "UserSession",
-  user: "User",
-});
-
-export const lucia = new Lucia(adapter, {
-  sessionCookie: {
-    expires: false,
-    attributes: {
-      secure: process.env.NODE_ENV === "production",
-    },
-  },
-  getUserAttributes: (attributes) => {
-    return {
-      id: attributes.id,
-      email: attributes.email,
-      first_name: attributes.first_name,
-      last_name: attributes.last_name,
-      created_at: attributes.created_at,
-      updated_at: attributes.updated_at,
-    };
-  },
-});
 
 async function fetchUserSessionData(
   rawSessionId?: string,
