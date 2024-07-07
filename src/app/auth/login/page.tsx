@@ -15,7 +15,7 @@ export default function Page() {
     mutationFn: (values: SignInUser) => signIn(values),
     onSuccess: async (data) => {
       if (data.ok) {
-        await queryClient.invalidateQueries({
+        await queryClient.refetchQueries({
           queryKey: ["userSession"],
         });
         router.push("/");

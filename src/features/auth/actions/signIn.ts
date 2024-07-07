@@ -33,7 +33,7 @@ export async function signIn(data: SignInUser) {
       sessionCookie.attributes,
     );
 
-    return { ok: false, session };
+    return { ok: true, session };
   } catch {
     return { ok: false, error: "Email or password incorrect" };
   }
