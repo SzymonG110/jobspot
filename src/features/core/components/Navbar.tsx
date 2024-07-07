@@ -9,10 +9,10 @@ import {
   Button,
   Image,
 } from "@nextui-org/react";
-import NavProfile from "#/features/core/components/navbar/Profile";
+import { NavProfile } from "#/features/core/components/navbar/Profile";
 import { useUserSession } from "#/features/user/hooks/useUserSession";
 
-export default function Navbar() {
+export function Navbar() {
   const { userSession, isLoading } = useUserSession();
 
   return (

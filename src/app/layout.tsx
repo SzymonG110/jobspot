@@ -1,9 +1,9 @@
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
-import Container from "#/features/core/components/Container";
-import Navbar from "#/features/core/components/Navbar";
-import { Providers as ProvidersTSX } from "#/features/core/components/Providers";
+import { Container } from "#/features/core/components/Container";
+import { Navbar } from "#/features/core/components/Navbar";
+import { Providers } from "#/features/core/components/Providers";
 import "#/features/core/styles/globals.css";
 
 const montserrat = Montserrat({ subsets: ["latin"] });
@@ -19,13 +19,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en-EN" className="light">
+    <html lang="en" className="light">
       <body className={`${montserrat.className} min-h-screen`}>
-        <ProvidersTSX>
+        <Providers>
           <ReactQueryDevtools initialIsOpen={false} />
           <Navbar />
           <Container>{children}</Container>
-        </ProvidersTSX>
+        </Providers>
       </body>
     </html>
   );

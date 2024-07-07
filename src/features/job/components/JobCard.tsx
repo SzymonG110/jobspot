@@ -4,7 +4,7 @@ import { Image, Card, CardBody } from "@nextui-org/react";
 import { IconStarFilled } from "@tabler/icons-react";
 import Link from "next/link";
 
-export default function JobCard({}: {}) {
+export function JobCard({}: {}) {
   return (
     <Card>
       <CardBody>

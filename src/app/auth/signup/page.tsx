@@ -1,15 +1,26 @@
 "use client";
 
 import { Button, Input } from "@nextui-org/react";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useFormik } from "formik";
+import { useRouter } from "next/navigation";
 import { signUp } from "#/features/auth/actions/signUp";
 import { CreateUser } from "#/features/auth/schemas/signup";
 
 export default function Page() {
+  const queryClient = useQueryClient();
+  const router = useRouter();
+
   const { mutate, isPending } = useMutation({
     mutationFn: (values: CreateUser) => signUp(values),
-    onSuccess: (data) => data.ok && (location.href = "/"),
+    onSuccess: async (data) => {
+      if (data.ok) {
+        await queryClient.invalidateQueries({
+          queryKey: ["userSession"],
+        });
+        router.push("/");
+      }
+    },
   });
 
   const formik = useFormik({

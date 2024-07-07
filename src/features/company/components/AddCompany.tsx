@@ -16,7 +16,7 @@ import { useFormik } from "formik";
 import { ChangeEvent } from "react";
 import { createCompany } from "#/features/company/actions/createCompany";
 
-export default function AddCompany() {
+export function AddCompany() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const { mutate: createCompanyMutate, isPending: isCreating } = useMutation({
     mutationKey: ["createCompany"],

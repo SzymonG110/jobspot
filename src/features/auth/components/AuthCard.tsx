@@ -10,7 +10,7 @@ import {
 } from "@nextui-org/react";
 import { usePathname } from "next/navigation";
 
-export default function AuthCard({
+export function AuthCard({
   children,
 }: Readonly<{
   children: React.ReactNode;

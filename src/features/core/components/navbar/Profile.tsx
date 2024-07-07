@@ -12,7 +12,7 @@ import { useMutation } from "@tanstack/react-query";
 import { logout as logoutAuth } from "#/features/auth/actions/signOut";
 import { useUserSession } from "#/features/user/hooks/useUserSession";
 
-export default function NavProfile() {
+export function NavProfile() {
   const { userSession, isLoading } = useUserSession();
 
   const { mutate: logout } = useMutation({

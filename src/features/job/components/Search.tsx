@@ -17,7 +17,7 @@ const categories = [
   },
 ];
 
-export default function Search() {
+export function Search() {
   return (
     <div className="flex w-full gap-5 flex-col lg:flex-row px-3 md:px-0">
       <Input placeholder="Find..." aria-label="Company name, position..." />

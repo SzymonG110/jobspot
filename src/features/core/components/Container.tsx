@@ -2,7 +2,7 @@
 
 import { usePathname } from "next/navigation";
 
-export default function Container({
+export function Container({
   children,
 }: Readonly<{
   children: React.ReactNode;

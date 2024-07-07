@@ -2,7 +2,7 @@ import { Card, CardBody, CardFooter, Button, Image } from "@nextui-org/react";
 import { getCompany } from "#/features/company/actions/getCompany";
 import { Entered } from "#/features/core/types/generic";
 
-export default function Company({
+export function Company({
   company,
 }: {
   company: Entered<Awaited<ReturnType<typeof getCompany>>["companies"]>[0];
