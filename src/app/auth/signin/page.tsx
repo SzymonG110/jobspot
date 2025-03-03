@@ -26,7 +26,7 @@ const SignIn = () => {
         <CardTitle className="text-2xl">Sign in</CardTitle>
         <CardDescription>Sign in to continue to your account</CardDescription>
       </CardHeader>
-      <CardContent className="space-y-4">
+      <CardContent>
         <Form
           fields={[
             {
