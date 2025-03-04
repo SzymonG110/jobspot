@@ -20,8 +20,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${montserrat.className}`}>
-      <body className={`flex min-h-[100vh] flex-col antialiased`}>
+    <html lang="en">
+      <body
+        className={`${montserrat.className} flex min-h-[100vh] flex-col antialiased`}
+      >
         <Providers>
           <Navbar />
 

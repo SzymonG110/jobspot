@@ -33,7 +33,7 @@ const FormField = ({
   control: Control<FieldValues> | undefined;
   errors: Record<string, { message?: string } | undefined>;
 }) => (
-  <span className="space-y-2 block">
+  <span className="block space-y-2">
     <Label htmlFor={name}>{label}</Label>
     <Controller
       name={name}
