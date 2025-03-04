@@ -1,7 +1,7 @@
 import { Pool } from 'pg';
 import { Kysely, PostgresDialect } from 'kysely';
 
-export const pool = new Pool({
+const pool = new Pool({
   connectionString: process.env.DATABASE_URL!,
 });
 
@@ -11,6 +11,8 @@ const dialect = new PostgresDialect({
 
 interface Database {}
 
-export const db = new Kysely<Database>({
+const db = new Kysely<Database>({
   dialect,
 });
+
+export { db };

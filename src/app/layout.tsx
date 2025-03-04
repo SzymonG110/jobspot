@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import { Montserrat } from 'next/font/google';
+import { Providers } from '#/features/core/components/providers';
+import { Navbar } from '#/features/core/components/navbar';
 import '#/app/globals.css';
 
 const montserrat = Montserrat({
@@ -20,7 +22,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${montserrat.className}`}>
       <body className={`flex min-h-[100vh] flex-col antialiased`}>
-        <div className="flex-grow">{children}</div>
+        <Providers>
+          <Navbar />
+
+          <div className="flex-grow">{children}</div>
+        </Providers>
       </body>
     </html>
   );

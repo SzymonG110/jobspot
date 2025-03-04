@@ -33,7 +33,7 @@ const FormField = ({
   control: Control<FieldValues> | undefined;
   errors: Record<string, { message?: string } | undefined>;
 }) => (
-  <span className="space-y-2">
+  <span className="space-y-2 block">
     <Label htmlFor={name}>{label}</Label>
     <Controller
       name={name}
@@ -138,7 +138,7 @@ const Form = forwardRef(
         {submitText ? (
           <Button
             type="button"
-            className="w-full"
+            className="w-full cursor-pointer"
             disabled={isPending}
             onClick={() => {
               if (onSubmit) {

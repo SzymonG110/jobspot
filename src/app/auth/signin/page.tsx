@@ -13,7 +13,7 @@ import {
   CardHeader,
   CardTitle,
 } from '#/features/core/components/ui/card';
-import { SignInSchema } from '#/features/users/schema/auth';
+import { SignInSchema } from '#/features/users/schemas/auth';
 
 const SignIn = () => {
   //   const router = useRouter();
