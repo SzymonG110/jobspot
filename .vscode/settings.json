@@ -4,5 +4,8 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "prettier.endOfLine": "crlf",
-  "files.eol": "\r\n"
+  "files.eol": "\r\n",
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }
