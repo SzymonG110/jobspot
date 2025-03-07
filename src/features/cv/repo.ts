@@ -1,11 +1,18 @@
-"use server";
+'use server';
 
-import { minioClient } from "#/features/core/minio";
+import { wrapper } from '#/features/core/lib/wrapper';
+import { minioClient } from '#/features/core/minio';
+import { isPDF } from '#/features/cv/lib/isPDF';
 
-const upload = async (cv: File) => {
-  const buffer = Buffer.from(await cv.arrayBuffer());
+const upload = wrapper(
+  async (cv: File) => {
+    const isValid = await isPDF(cv);
+    if (!isValid) throw new Error('Invalid file');
 
-  minioClient.putObject("jobspot", cv.name, buffer, buffer.length);
-};
+    const buffer = Buffer.from(await cv.arrayBuffer());
+    throw new Error('Not implemented yet');
+    minioClient.putObject('jobspot', cv.name, buffer, buffer.length);
+  }
+);
 
 export { upload };
