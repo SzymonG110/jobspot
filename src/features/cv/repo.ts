@@ -10,7 +10,6 @@ const upload = wrapper(
     if (!isValid) throw new Error('Invalid file');
 
     const buffer = Buffer.from(await cv.arrayBuffer());
-    throw new Error('Not implemented yet');
     minioClient.putObject('jobspot', cv.name, buffer, buffer.length);
   }
 );

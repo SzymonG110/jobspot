@@ -1,10 +1,10 @@
 const wrapper =
-  <T, A extends unknown[]>(fn: (...args: A) => T) =>
-  (...args: A): T | { error: true; message: string } => {
+  <T, A extends unknown[]>(fn: (...args: A) => Promise<T> | T) =>
+  async (...args: A): Promise<T | { error: true; message: string }> => {
     try {
-      return fn(...args);
+      return await fn(...args);
     } catch (error) {
-      console.log('error', error);
+      console.error(error);
 
       return {
         error: true,
