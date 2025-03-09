@@ -1,7 +1,7 @@
 'use client';
 
-// import { useRouter } from 'next/navigation';
-// import type { z } from 'zod';
+import { useRouter } from 'next/navigation';
+import type { z } from 'zod';
 import Link from 'next/link';
 
 import { Form } from '#/features/core/components/form';
@@ -14,11 +14,28 @@ import {
   CardTitle,
 } from '#/features/core/components/ui/card';
 import { SignInSchema } from '#/features/users/schemas/auth';
+import { authClient } from '#/features/core/auth/auth-client';
 
 const SignIn = () => {
-  //   const router = useRouter();
+  const router = useRouter();
 
-  const signIn = async () => {};
+  const signIn = async (formData: z.infer<typeof SignInSchema>) => {
+    await authClient.signIn.email(
+      {
+        email: formData.email,
+        password: formData.password,
+        rememberMe: true,
+      },
+      {
+        onSuccess: () => {
+          router.push('/');
+        },
+        onError: (error) => {
+          console.error(error);
+        },
+      },
+    );
+  };
 
   return (
     <Card className="flex w-full max-w-md flex-col">

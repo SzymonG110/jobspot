@@ -1,5 +1,5 @@
 import { betterAuth } from 'better-auth';
-import { customSession } from 'better-auth/plugins';
+import { customSession, organization } from 'better-auth/plugins';
 
 import { db } from '#/features/core/db';
 
@@ -16,6 +16,8 @@ const auth = betterAuth({
         session,
       };
     }),
+
+    organization()
   ],
 
   emailAndPassword: {

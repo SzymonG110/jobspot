@@ -5,15 +5,14 @@ const middleware = async (request: NextRequest) => {
   if (request.nextUrl.pathname.startsWith('/auth')) {
     const sessionCookie = getSessionCookie(request);
     if (sessionCookie) {
-      return NextResponse.redirect(new URL('/dashboard', request.url));
+      return NextResponse.redirect(new URL('/panel', request.url));
+    }
+  } else if (request.nextUrl.pathname.startsWith('/panel')) {
+    const sessionCookie = getSessionCookie(request);
+    if (!sessionCookie) {
+      return NextResponse.redirect(new URL('/auth/signin', request.url));
     }
   }
-  // else if (!request.nextUrl.pathname.startsWith('/dashboard')) {
-  //   const sessionCookie = getSessionCookie(request);
-  //   if (!sessionCookie) {
-  //     return NextResponse.redirect(new URL('/auth/signin', request.url));
-  //   }
-  // }
 };
 
 export default middleware;

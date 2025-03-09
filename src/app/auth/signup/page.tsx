@@ -20,7 +20,7 @@ const SignUp = () => {
   const router = useRouter();
 
   const signUp = async (formData: z.infer<typeof SignUpSchema>) => {
-    const { data } = await authClient.signUp.email(
+    await authClient.signUp.email(
       {
         email: formData.email,
         password: formData.password,
@@ -35,8 +35,6 @@ const SignUp = () => {
         },
       },
     );
-
-    console.log(data);
   };
 
   return (

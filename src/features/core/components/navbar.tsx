@@ -127,9 +127,11 @@ const Navbar = () => {
               </DropdownMenuContent>
             </DropdownMenu>
           ) : ( */}
-          <Button onClick={() => {}}>
-            <User className="mr-2 h-4 w-4" /> Login
-          </Button>
+          <Link href="/auth/signin" passHref>
+            <Button className="cursor-pointer">
+              <User className="mr-2 h-4 w-4" /> Login
+            </Button>
+          </Link>
           {/* )} */}
         </div>
       </div>
